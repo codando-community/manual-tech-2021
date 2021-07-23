@@ -1,0 +1,363 @@
+{
+  "intents": [
+    {
+      "intent": "codando_como_ser_organizador",
+      "examples": [
+        {
+          "text": "como faço para participar do staff?"
+        },
+        {
+          "text": "como faço para ser staff?"
+        },
+        {
+          "text": "Eu posso fazer parte da organização do Codando?"
+        },
+        {
+          "text": "Posso ser um organizador do Codando?"
+        },
+        {
+          "text": "quero ser um staff"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "codando_onde_estamos",
+      "examples": [
+        {
+          "text": "em quais plataformas vocês estão?"
+        },
+        {
+          "text": "Não sei mexer no discord, vocês tem outra plataforma?"
+        },
+        {
+          "text": "onde eu posso encontrar vocês?"
+        },
+        {
+          "text": "onde vocês estão presentes?"
+        },
+        {
+          "text": "quais as redes do Codando?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "eventos_quando_acontecem",
+      "examples": [
+        {
+          "text": "em que época acontecem os eventos?"
+        },
+        {
+          "text": "qual o período dos eventos?"
+        },
+        {
+          "text": "qual o próximo evento?"
+        },
+        {
+          "text": "quando os eventos acontecem?"
+        },
+        {
+          "text": "Quando serão os eventos de férias?"
+        },
+        {
+          "text": "vocês dão eventos nas férias?"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "rede",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Discord",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Instagram",
+          "synonyms": [
+            "Insta"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Linkedin",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "WhatsApp",
+          "synonyms": [
+            "whats",
+            "wpp"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "YouTube",
+          "synonyms": [
+            "YT"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Bem-vindo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Oi eu sou o Cody. Estou aqui para te ajudar com dúvidas sobre as redes sociais do Codando, como ser um de nossos organizadores, como reservar as salas de estudo do discord e tirar dúvidas sobre a data dos nossos eventos."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Bem-vindo"
+    },
+    {
+      "type": "standard",
+      "title": "Em outros casos",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Eu não entendi. Você pode tentar reformular a frase."
+              },
+              {
+                "text": "Você pode reformular sua afirmação? Eu não estou entendendo."
+              },
+              {
+                "text": "Eu não entendi o sentido."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Em outros casos",
+      "previous_sibling": "node_9_1626572344564",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "Em quais redes estamos",
+      "parent": "node_9_1626572344564",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#codando_onde_estamos",
+      "dialog_node": "node_10_1626311638618",
+      "previous_sibling": "node_10_1626312512278"
+    },
+    {
+      "type": "standard",
+      "title": "Quando são os eventos",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Nossos eventos acontecem 2 vezes ao ano, nas épocas de férias."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1626572344564",
+      "conditions": "#eventos_quando_acontecem",
+      "dialog_node": "node_10_1626312512278",
+      "digress_out": "allow_all",
+      "previous_sibling": "node_3_1626312275053"
+    },
+    {
+      "type": "standard",
+      "title": "Como ser um organizador",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Para ser um organizador do Codando você precisa se inscrever no Projeto de Extensão Acolher e passar por nossas seletivas"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1626572344564",
+      "conditions": "#codando_como_ser_organizador",
+      "dialog_node": "node_3_1626312275053"
+    },
+    {
+      "type": "folder",
+      "title": "Dúvidas frequentes",
+      "digress_in": "returns",
+      "dialog_node": "node_9_1626572344564",
+      "previous_sibling": "Bem-vindo"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Aqui temos alguns vídeos sobre nossos eventos e os sistemas da universidade https://www.youtube.com/channel/UCadttXUVNJwjo-q70lmweyA"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1626311638618",
+      "conditions": "@rede:YouTube",
+      "dialog_node": "response_10_1626312080544",
+      "previous_sibling": "response_10_1626312092402"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Para nos seguir no instagram e acompanhar nossos conteúdos acesse https://www.instagram.com/codando.community/"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1626311638618",
+      "conditions": "@rede:Instagram",
+      "dialog_node": "response_10_1626312092402",
+      "previous_sibling": "response_9_1626312049209"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Você pode acompanhar nossos conteúdos do Linkedin em https://www.linkedin.com/company/codando-community/"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1626311638618",
+      "conditions": "@rede:Linkedin",
+      "dialog_node": "response_10_1626572922922",
+      "previous_sibling": "response_10_1626312080544"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Infelizmente, no momento, ainda não estamos no WhatsApp"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1626311638618",
+      "conditions": "@rede:WhatsApp",
+      "dialog_node": "response_2_1626311854073"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Você pode encontrar todas as informações sobre nossas redes em nosso site: www.codandocommunity.com"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1626311638618",
+      "conditions": "anything_else",
+      "dialog_node": "response_6_1626312108538",
+      "previous_sibling": "response_10_1626572922922"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Para fazer parte da nossa comunidade no discord acesse esse link https://discord.gg/PaHecYR"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1626311638618",
+      "conditions": "@rede:Discord",
+      "dialog_node": "response_9_1626312049209",
+      "previous_sibling": "response_2_1626311854073"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": "Você quis dizer:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "Nenhuma das anteriores"
+    },
+    "human_agent_assist": {
+      "prompt": "Você quis dizer:"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "Cody - LP evento 2",
+  "language": "pt-br",
+  "description": ""
+}
