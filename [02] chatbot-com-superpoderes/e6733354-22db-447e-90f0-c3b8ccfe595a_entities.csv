@@ -1,0 +1,7 @@
+canal_estudos,Hades
+canal_estudos,Poseidon
+canal_estudos,Hera
+canal_estudos,Zeus
+canal_estudos,Artemis
+canal_estudos,Atena
+discord,id,"/.{1,}\043\d{4}/"

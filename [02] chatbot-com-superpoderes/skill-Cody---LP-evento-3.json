@@ -1,0 +1,837 @@
+{
+  "intents": [
+    {
+      "intent": "codando_como_ser_organizador",
+      "examples": [
+        {
+          "text": "como faço para participar do staff?"
+        },
+        {
+          "text": "como faço para ser staff?"
+        },
+        {
+          "text": "Eu posso fazer parte da organização do Codando?"
+        },
+        {
+          "text": "Posso ser um organizador do Codando?"
+        },
+        {
+          "text": "quero ser um staff"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "codando_onde_estamos",
+      "examples": [
+        {
+          "text": "em quais plataformas vocês estão?"
+        },
+        {
+          "text": "Não sei mexer no discord, vocês tem outra plataforma?"
+        },
+        {
+          "text": "onde eu posso encontrar vocês?"
+        },
+        {
+          "text": "onde vocês estão presentes?"
+        },
+        {
+          "text": "quais as redes do Codando?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "discord_reservar_sala_de_estudos",
+      "examples": [
+        {
+          "text": "Gostaria de reservar uma sala de estudos"
+        },
+        {
+          "text": "Guarda um horário na sala de estudos do discord"
+        },
+        {
+          "text": "Preciso marcar uma reunião de estudos no discord"
+        },
+        {
+          "text": "Quero agendar uma reunião na sala de estudos"
+        },
+        {
+          "text": "Quero usar a sala poseidon de estudos"
+        }
+      ]
+    },
+    {
+      "intent": "eventos_quando_acontecem",
+      "examples": [
+        {
+          "text": "em que época acontecem os eventos?"
+        },
+        {
+          "text": "qual o período dos eventos?"
+        },
+        {
+          "text": "qual o próximo evento?"
+        },
+        {
+          "text": "quando os eventos acontecem?"
+        },
+        {
+          "text": "Quando serão os eventos de férias?"
+        },
+        {
+          "text": "vocês dão eventos nas férias?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "nao",
+      "examples": [
+        {
+          "text": "discordo"
+        },
+        {
+          "text": "errado"
+        },
+        {
+          "text": "ñ"
+        },
+        {
+          "text": "não"
+        },
+        {
+          "text": "negativo"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "sim",
+      "examples": [
+        {
+          "text": "certo"
+        },
+        {
+          "text": "com certeza"
+        },
+        {
+          "text": "concordo"
+        },
+        {
+          "text": "confirmo"
+        },
+        {
+          "text": "exato"
+        },
+        {
+          "text": "isso mesmo"
+        },
+        {
+          "text": "ok"
+        },
+        {
+          "text": "okay"
+        },
+        {
+          "text": "positivo"
+        },
+        {
+          "text": "sim"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "canal_estudos",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Artemis",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Atena",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Hades",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Hera",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Poseidon",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Zeus",
+          "synonyms": []
+        }
+      ]
+    },
+    {
+      "entity": "discord",
+      "values": [
+        {
+          "type": "patterns",
+          "value": "id",
+          "patterns": [
+            ".{1,}\\043\\d{4}"
+          ]
+        }
+      ]
+    },
+    {
+      "entity": "rede",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Discord",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Instagram",
+          "synonyms": [
+            "Insta"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Linkedin",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "WhatsApp",
+          "synonyms": [
+            "whats",
+            "wpp"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "YouTube",
+          "synonyms": [
+            "YT"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-date",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-time",
+      "values": [],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Bem-vindo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Oi eu sou o Cody. Estou aqui para te ajudar com dúvidas sobre as redes sociais do Codando, como ser um de nossos organizadores, como reservar as salas de estudo do discord e tirar dúvidas sobre a data dos nossos eventos."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Bem-vindo"
+    },
+    {
+      "type": "standard",
+      "title": "Em outros casos",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Eu não entendi. Você pode tentar reformular a frase."
+              },
+              {
+                "text": "Você pode reformular sua afirmação? Eu não estou entendendo."
+              },
+              {
+                "text": "Eu não entendi o sentido."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Em outros casos",
+      "previous_sibling": "node_8_1626570230864",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Para quando gostaria de agendar sua reunião?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "slot_2_1626570291406",
+      "event_name": "focus",
+      "dialog_node": "handler_10_1626570291407",
+      "previous_sibling": "handler_6_1626570291407"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_1_1626570316998",
+      "context": {
+        "time": "@sys-time"
+      },
+      "conditions": "@sys-time",
+      "event_name": "input",
+      "dialog_node": "handler_10_1626570317000"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Qual seu id do discord? Ex: Fulano\\#0000"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "slot_7_1626571478618",
+      "event_name": "focus",
+      "dialog_node": "handler_10_1626571478619",
+      "previous_sibling": "handler_1_1626571478619"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_5_1626569781425",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1626569829412",
+      "previous_sibling": "node_3_1626571387027"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_7_1626571478618",
+      "context": {
+        "discord_id": "<? @discord.literal ?>"
+      },
+      "conditions": "@discord:id",
+      "event_name": "input",
+      "dialog_node": "handler_1_1626571478619"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "title": "Qual canal você quer reservar?",
+            "options": [
+              {
+                "label": "Hera",
+                "value": {
+                  "input": {
+                    "text": "Hera"
+                  }
+                }
+              },
+              {
+                "label": "Poseidon",
+                "value": {
+                  "input": {
+                    "text": "Poseidon"
+                  }
+                }
+              },
+              {
+                "label": "Hades",
+                "value": {
+                  "input": {
+                    "text": "Hades"
+                  }
+                }
+              },
+              {
+                "label": "Artemis",
+                "value": {
+                  "input": {
+                    "text": "Artemis"
+                  }
+                }
+              },
+              {
+                "label": "Atena",
+                "value": {
+                  "input": {
+                    "text": "Atena"
+                  }
+                }
+              },
+              {
+                "label": "Zeus",
+                "value": {
+                  "input": {
+                    "text": "Zeus"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "slot_3_1626569829905",
+      "event_name": "focus",
+      "dialog_node": "handler_2_1626569829913",
+      "previous_sibling": "handler_9_1626569829913"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": " Que horas a reunião irá começar?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "slot_1_1626570316998",
+      "event_name": "focus",
+      "dialog_node": "handler_3_1626570317000",
+      "previous_sibling": "handler_10_1626570317000"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_2_1626570291406",
+      "context": {
+        "date": "@sys-date"
+      },
+      "conditions": "@sys-date",
+      "event_name": "input",
+      "dialog_node": "handler_6_1626570291407"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_3_1626569829905",
+      "context": {
+        "canal_estudos": "@canal_estudos"
+      },
+      "conditions": "@canal_estudos",
+      "event_name": "input",
+      "dialog_node": "handler_9_1626569829913"
+    },
+    {
+      "type": "standard",
+      "title": "Em quais redes estamos",
+      "parent": "node_9_1626572344564",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#codando_onde_estamos",
+      "dialog_node": "node_10_1626311638618",
+      "previous_sibling": "node_10_1626312512278"
+    },
+    {
+      "type": "standard",
+      "title": "Quando são os eventos",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Nossos eventos acontecem 2 vezes ao ano, nas épocas de férias."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1626572344564",
+      "conditions": "#eventos_quando_acontecem",
+      "dialog_node": "node_10_1626312512278",
+      "digress_out": "allow_all",
+      "previous_sibling": "node_3_1626312275053"
+    },
+    {
+      "type": "standard",
+      "title": "Efetuar reserva",
+      "output": {
+        "text": {
+          "values": [
+            "Sua reserva foi feita com sucesso!"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_5_1626569781425",
+      "metadata": {
+        "_customization": {
+          "mcr": false
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_3_1626571387027"
+      },
+      "conditions": "#sim",
+      "dialog_node": "node_2_1626570433575"
+    },
+    {
+      "type": "standard",
+      "title": "Como ser um organizador",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Para ser um organizador do Codando você precisa se inscrever no Projeto de Extensão Acolher e passar por nossas seletivas"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1626572344564",
+      "conditions": "#codando_como_ser_organizador",
+      "dialog_node": "node_3_1626312275053"
+    },
+    {
+      "type": "standard",
+      "title": "Limpar variáveis do formulário",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_5_1626569781425",
+      "context": {
+        "date": null,
+        "time": null,
+        "discord_id": null,
+        "canal_estudos": null
+      },
+      "conditions": "true",
+      "dialog_node": "node_3_1626571387027",
+      "previous_sibling": "node_6_1626570786541"
+    },
+    {
+      "type": "frame",
+      "title": "Formulário",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Okay. Uma reunião no canal $canal_estudos do discord no dia <? $date.reformatDateTime(\"dd/MM/yyyy\") ?> às <? $time.reformatDateTime(\"h:mm a\") ?> agendada por $discord_id. Está correto?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_8_1626570230864",
+      "conditions": "#discord_reservar_sala_de_estudos",
+      "dialog_node": "node_5_1626569781425",
+      "digress_out": "allow_all",
+      "digress_out_slots": "allow_returning"
+    },
+    {
+      "type": "standard",
+      "title": "Coletar dados novamente",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Me informe os dados novamente por favor."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_5_1626569781425",
+      "context": {
+        "date": null,
+        "time": null,
+        "discord_id": null,
+        "canal_estudos": null
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_5_1626569781425"
+      },
+      "conditions": "#nao",
+      "dialog_node": "node_6_1626570786541",
+      "previous_sibling": "node_2_1626570433575"
+    },
+    {
+      "type": "folder",
+      "title": "Reservar sala de estudos",
+      "dialog_node": "node_8_1626570230864",
+      "previous_sibling": "node_9_1626572344564"
+    },
+    {
+      "type": "folder",
+      "title": "Dúvidas frequentes",
+      "digress_in": "returns",
+      "dialog_node": "node_9_1626572344564",
+      "previous_sibling": "Bem-vindo"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Aqui temos alguns vídeos sobre nossos eventos e os sistemas da universidade https://www.youtube.com/channel/UCadttXUVNJwjo-q70lmweyA"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1626311638618",
+      "conditions": "@rede:YouTube",
+      "dialog_node": "response_10_1626312080544",
+      "previous_sibling": "response_10_1626312092402"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Para nos seguir no instagram e acompanhar nossos conteúdos acesse https://www.instagram.com/codando.community/"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1626311638618",
+      "conditions": "@rede:Instagram",
+      "dialog_node": "response_10_1626312092402",
+      "previous_sibling": "response_9_1626312049209"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Você pode acompanhar nossos conteúdos do Linkedin em https://www.linkedin.com/company/codando-community/"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1626311638618",
+      "conditions": "@rede:Linkedin",
+      "dialog_node": "response_10_1626572922922",
+      "previous_sibling": "response_10_1626312080544"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Infelizmente, no momento, ainda não estamos no WhatsApp"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1626311638618",
+      "conditions": "@rede:WhatsApp",
+      "dialog_node": "response_2_1626311854073"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Desculpe, não consegui reservar sua sala, você pode tentar mais tarde novamente."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_2_1626570433575",
+      "disabled": true,
+      "conditions": "anything_else",
+      "dialog_node": "response_5_1626571468846",
+      "previous_sibling": "response_9_1626571468361"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Você pode encontrar todas as informações sobre nossas redes em nosso site: www.codandocommunity.com"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1626311638618",
+      "conditions": "anything_else",
+      "dialog_node": "response_6_1626312108538",
+      "previous_sibling": "response_10_1626572922922"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Para fazer parte da nossa comunidade no discord acesse esse link https://discord.gg/PaHecYR"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1626311638618",
+      "conditions": "@rede:Discord",
+      "dialog_node": "response_9_1626312049209",
+      "previous_sibling": "response_2_1626311854073"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_2_1626570433575",
+      "disabled": true,
+      "conditions": "$webhook_result_1",
+      "dialog_node": "response_9_1626571468361"
+    },
+    {
+      "type": "slot",
+      "parent": "node_5_1626569781425",
+      "variable": "$time",
+      "dialog_node": "slot_1_1626570316998",
+      "previous_sibling": "slot_2_1626570291406"
+    },
+    {
+      "type": "slot",
+      "parent": "node_5_1626569781425",
+      "variable": "$date",
+      "dialog_node": "slot_2_1626570291406",
+      "previous_sibling": "slot_3_1626569829905"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_5_1626569781425",
+      "variable": "$canal_estudos",
+      "dialog_node": "slot_3_1626569829905",
+      "previous_sibling": "handler_1_1626569829412"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_5_1626569781425",
+      "variable": "$discord_id",
+      "dialog_node": "slot_7_1626571478618",
+      "previous_sibling": "slot_1_1626570316998"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": "Você quis dizer:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "Nenhuma das anteriores"
+    },
+    "human_agent_assist": {
+      "prompt": "Você quis dizer:"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "Cody - LP evento 3",
+  "language": "pt-br",
+  "description": ""
+}
