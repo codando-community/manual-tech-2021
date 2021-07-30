@@ -17,13 +17,14 @@ Quando um Evento é disparado eles fazem o que tem que fazer e produzem uma resp
 
 Este link será inserido no Watson Assistant para que ele possa enviar e receber dados.
 
-Vá na sua função criada, clique em "Endpoints" e depois no símbolo de cópia próximo a url (o link será copiado para a área de transferência)
+1. Vá na sua função criada, clique em "Endpoints"
+2. Marque a opção "Enable as Web Action"
+3. Clique no símbolo de cópia próximo a url pública gerada (o link será copiado para a área de transferência e iremos utilizar no próximo passo)
 
 ![habilitandoWebhooks/5.png](images/5.png)
 
 ## Habilitando webhooks no Watson Assistant
-
-Depois de habilitado, vá no menu lateral e selectione Options > Webhooks
+No Watson Assistant, depois de selecionar a sua skill e clicar nela, vá no menu lateral e selectione Options > Webhooks
 
 ![habilitandoWebhooks/3.png](images/3.png)
 
