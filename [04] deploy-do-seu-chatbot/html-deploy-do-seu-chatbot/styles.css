@@ -1,0 +1,36 @@
+body {
+    background-position: center;
+    background-image: url(img/bg-flow-contact.svg);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-page h2, #main-page .title-wrapper p:nth-child(3) {
+    text-transform: uppercase;
+    font-size: 2.3rem;
+    color: #FFC42E;
+    text-align: center;
+}
+
+#main-page .title-wrapper p:nth-child(3) {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#main-page .title-wrapper p {
+    color: #F9F9F9;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    letter-spacing: 0.3rem;
+}
+
+#main-page .title-wrapper p span img {
+    width: 2rem;
+    margin-left: 1rem;
+}
